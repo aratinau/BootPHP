@@ -3,12 +3,19 @@ session_start();
 
 const PASSWORD = "pass";
 
-// TODO variable messages flash
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($_POST["password"] === PASSWORD) {
         $_SESSION["user"]["username"] = $_POST["username"];
-        header('Location: index.php');
+        $_SESSION["messages"]["type"] = "success";
+        $_SESSION["messages"]["content"] = "Vous êtes bien connecté";
     }
+    else
+    {
+        $_SESSION["messages"]["type"] = "danger";
+        $_SESSION["messages"]["content"] = "Erreur dans votre mot de passe";
+    }
+    header('Location: index.php');
+    exit();
 }
 ?>
 <!doctype html>
