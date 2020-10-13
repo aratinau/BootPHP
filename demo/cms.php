@@ -1,9 +1,12 @@
 <?php
-if (isset($_POST["path_name"]) && isset($_POST["content"]) && !empty($_POST["path_name"]) && !empty($_POST["path_name"])) {
+if (isset($_POST["path_name"]) && isset($_POST["content"]) && !empty($_POST["path_name"]) && !empty($_POST["content"])) {
     $path = DEMO_PATH . DIRECTORY_SEPARATOR . $_POST["path_name"] . '.php';
     $handle = fopen($path, 'w');
     fwrite($handle, $_POST["content"]);
     fclose($handle);
+
+    $_SESSION["messages"]["type"] = "success";
+    $_SESSION["messages"]["content"] = "Fichier bien enregistré";
     header('Location: '.$current_path_name);
 }
 
@@ -23,6 +26,7 @@ if (isset($_GET["edit"]))
     $content_file = htmlentities($content_file);
     $file_name = removeExtension($_GET["edit"]);
 }
+
 ?>
 <form action="<?php echo $current_path_name; ?>" method="post">
     Nom fichier <input type="text" name="path_name" value="<?php echo $file_name; ?>" /> .php
