@@ -3,6 +3,8 @@
 session_start();
 session_destroy();
 
-// TODO message deconnexion
+session_start();
+$_SESSION["messages"]["type"] = "success";
+$_SESSION["messages"]["content"] = "Vous êtes bien déconnecté";
 
 header('Location: index.php');

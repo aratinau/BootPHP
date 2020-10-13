@@ -32,6 +32,15 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
     <?php require('navbar.php'); ?>
     <div class="container">
         <?php
+            if (isset($_SESSION["messages"])) { ?>
+                <div class="alert alert-<?php echo $_SESSION["messages"]["type"]; ?>" role="alert">
+                <?php
+                    echo $_SESSION["messages"]["content"];
+                    unset($_SESSION["messages"]);
+                ?>
+                </div>
+            <?php
+            }
 			if (!isset($_SESSION["user"])) {
 				require('login.php'); 
 			}
