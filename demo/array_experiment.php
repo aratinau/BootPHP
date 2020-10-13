@@ -61,9 +61,11 @@ if (isset($_GET["operation"])) {
 <a href="<?php echo $current_path_name; ?>&?operation=insert-random">insert random</a>
 <br />
 <?php
-foreach ($_SESSION["list"] as $value) {
-    echo $value;
-    echo "<br />";
+if (isset($_SESSION["list"])) {
+    foreach ($_SESSION["list"] as $value) {
+        echo $value;
+        echo "<br />";
+    }
 }
 
 if (!empty($resultat)) {

@@ -82,7 +82,6 @@ require('show_code.php');
                     <?php if(isset($_GET["page"])) {
                         $path_file = DEMO_PATH .'/'. $_GET["page"];
                         require($path_file);
-                        // $content_file = file($path_file);
                         show_code($path_file);
                     }
                     ?>
