@@ -4,7 +4,9 @@ session_start();
 const PASSWORD = "pass";
 const DEMO_PATH = "demo";
 
-$current_path_name = basename(__FILE__, '.php') . '.php?page='. $_GET["page"];
+if (isset($_GET["page"])) {
+    $current_path_name = basename(__FILE__, '.php') . '.php?page='. $_GET["page"];
+}
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($_POST["password"] === PASSWORD) {
@@ -22,6 +24,7 @@ if (isset($_POST["username"]) && isset($_POST["password"])) {
 }
 
 require('explore_demo.php');
+require('show_code.php');
 ?>
 <!doctype html>
 <html lang="en" class="">
@@ -77,7 +80,10 @@ require('explore_demo.php');
 
                 <div class="col-9">
                     <?php if(isset($_GET["page"])) {
-                        require(DEMO_PATH .'/'. $_GET["page"]);
+                        $path_file = DEMO_PATH .'/'. $_GET["page"];
+                        require($path_file);
+                        // $content_file = file($path_file);
+                        show_code($path_file);
                     }
                     ?>
                 </div>
