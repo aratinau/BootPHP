@@ -20,3 +20,12 @@ function is_extension_is_php($str)
 
     return false;
 }
+
+function removeExtension($str)
+{
+    $str_exploded = explode('.', $str);
+    array_pop($str_exploded);
+    $str_exploded = implode('.', $str_exploded);
+
+    return $str_exploded;
+}
