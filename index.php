@@ -2,6 +2,7 @@
 session_start();
 
 const PASSWORD = "pass";
+const DEMO_PATH = "demo";
 
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($_POST["password"] === PASSWORD) {
@@ -55,12 +56,28 @@ require('explore_demo.php');
 			}
 			else
             {
-            ?>
+                ?>
                 <h1>Hello <?php echo $_SESSION["user"]["username"]; ?></h1>
+            <div class="row">
+                <div class="col">
+                <ul class="list-group">
+                <?php
+                foreach ($content_clean as $element)
+                {
+                    echo '<li class="list-group-item"><a href="'. DEMO_PATH .'/'.$element.'">'. $element .'</a></li>';
+                }
+                echo '</ul>';
+            ?>
             <?php
             }
 		?>
-    </div>
+                </div>
+
+                <div class="col-9">
+                  3 of 3
+                </div>
+            </div>
+        </div>
 	</body>
 </html>
 

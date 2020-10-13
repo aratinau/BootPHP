@@ -1,7 +1,6 @@
 <?php
 require('find_ext.php');
 
-const DEMO_PATH = "demo";
 
 $content_folder = scandir(DEMO_PATH);
 
@@ -25,4 +24,4 @@ foreach ($content_folder as $file)
     }
 }
 
-var_dump($content_clean);
+$content_folder = $content_clean;
