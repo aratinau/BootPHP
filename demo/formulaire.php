@@ -4,13 +4,6 @@ function convert($value) {
     return htmlspecialchars($value);
 }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
 <h1>Formulaire</h1>
 
 <?php
@@ -25,7 +18,7 @@ if (isset($_POST["prenom"]) && $_POST["prenom"] !== '') {
 else
 {
 ?>
-    <form action="formulaire.php" method="post">
+    <form action="<?php echo $current_path_name; ?>" method="post">
         Entrez votre prénom
         <input type="text" name="prenom" />
         <input type="submit" />
@@ -33,7 +26,3 @@ else
 <?php
 }
 ?>
-
-</body>
-</html> 
-

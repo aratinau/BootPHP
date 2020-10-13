@@ -4,6 +4,8 @@ session_start();
 const PASSWORD = "pass";
 const DEMO_PATH = "demo";
 
+$current_path_name = basename(__FILE__, '.php') . '.php?page='. $_GET["page"];
+
 if (isset($_POST["username"]) && isset($_POST["password"])) {
     if ($_POST["password"] === PASSWORD) {
         $_SESSION["user"]["username"] = $_POST["username"];
@@ -62,9 +64,9 @@ require('explore_demo.php');
                 <div class="col">
                 <ul class="list-group">
                 <?php
-                foreach ($content_clean as $element)
+                foreach ($content_clean as $file_name)
                 {
-                    echo '<li class="list-group-item"><a href="'. DEMO_PATH .'/'.$element.'">'. $element .'</a></li>';
+                    echo '<li class="list-group-item"><a href="index.php?page='.$file_name.'">'. $file_name .'</a></li>';
                 }
                 echo '</ul>';
             ?>
@@ -74,7 +76,10 @@ require('explore_demo.php');
                 </div>
 
                 <div class="col-9">
-                  3 of 3
+                    <?php if(isset($_GET["page"])) {
+                        require(DEMO_PATH .'/'. $_GET["page"]);
+                    }
+                    ?>
                 </div>
             </div>
         </div>

@@ -7,7 +7,7 @@
 
 <h1>Mini calculette</h1>
 
-<form action="mini_calculette.php" method="post">
+<form action="<?php echo $current_path_name; ?>" method="post">
     <input type="text" name="first-number" value="" />
     <select name="operation">
         <option value="addition">addition</option>

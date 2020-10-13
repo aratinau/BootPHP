@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-<h1>Array</h1>
-
 <?php
 if (isset($_POST["tags"]) && $_POST["tags"] !== '') {
     $tags = explode(',', $_POST["tags"]);
@@ -25,7 +16,7 @@ if (isset($_POST["tags"]) && $_POST["tags"] !== '') {
 else
 {
 ?>
-    <form action="array.php" method="post">
+    <form action="<?php echo $current_path_name; ?>" method="post">
         Séparez les tags par des virgules
         <input type="text" name="tags" />
         <input type="submit" />
@@ -33,7 +24,3 @@ else
 <?php
 }
 ?>
-
-</body>
-</html> 
-

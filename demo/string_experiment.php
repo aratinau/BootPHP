@@ -1,6 +1,6 @@
 <?php
 // toujours initialiser session en haut du fichier
-session_start();
+// session_start();
 
 $resultat = isset($_POST["chaine"]) ? $_POST["chaine"] : '';
 if (isset($_POST["chaine"]) && isset($_POST["lettre"])) {
@@ -33,13 +33,6 @@ if (isset($_POST["chaine"]) && isset($_POST["lettre"])) {
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-<meta charset="UTF-8">
-</head>
-<body>
 
 <h1>Array Experiment</h1>
 <h2>String</h2>
@@ -56,7 +49,7 @@ $value_chaine = isset($_POST["chaine"]) ? $_POST["chaine"] : '';
 $value_lettre = isset($_POST["lettre"]) ? $_POST["lettre"] : '';
 $value_remplacer = isset($_POST["remplacer"]) ? $_POST["remplacer"] : '';
 ?>
-<form action="string_experiment.php" method="post">
+<form action="<?php echo $current_path_name; ?>" method="post">
     Inserer une chaine de caractère
     <input type="text" name="chaine" value="<?php echo $value_chaine; ?>" />
     <br />
@@ -81,7 +74,3 @@ $value_remplacer = isset($_POST["remplacer"]) ? $_POST["remplacer"] : '';
     <br />
     <input type="submit" />
 </form>
-
-</body>
-</html> 
-

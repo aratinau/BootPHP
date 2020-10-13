@@ -1,6 +1,6 @@
 <?php
 // toujours initialiser session en haut du fichier
-session_start();
+// session_start();
 
 function total($values)
 {
@@ -33,7 +33,7 @@ if (isset($_POST["list"])) {
 
     if (isset($_POST["insert"]) && $_POST["insert"] == 'on') {
         $_SESSION["list"][] = $resultat;
-        header('Location: array_experiment.php');
+        header('Location: ' . $current_path_name);
     }
 }
 
@@ -49,23 +49,16 @@ if (isset($_GET["operation"])) {
     if ($operation === "insert-random") {
         $_SESSION["list"][] = random_int(0, 500);
     }
-    header('Location: array_experiment.php');
+    header('Location: ' . $current_path_name);
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
 <h1>Array Experiment</h1>
 <h2>Int</h2>
 
-<a href="array_experiment.php?operation=delete-first" />delete first</a>
-<a href="array_experiment.php?operation=delete-last" />delete last</a>
-<a href="array_experiment.php?operation=insert-random" />insert random</a>
+<a href="<?php echo $current_path_name; ?>&operation=delete-first">delete first</a>
+<a href="<?php echo $current_path_name; ?>&?operation=delete-last">delete last</a>
+<a href="<?php echo $current_path_name; ?>&?operation=insert-random">insert random</a>
 <br />
 <?php
 foreach ($_SESSION["list"] as $value) {
@@ -77,7 +70,7 @@ if (!empty($resultat)) {
     echo "le resultat est <span style='color: red'>". $resultat . "</span>";
 }
 ?>
-<form action="array_experiment.php" method="post">
+    <form action="<?php $current_path_name; ?>" method="post">
     Inserer une liste d'entier
     <input type="text" name="list" value="<?php echo $value_list; ?>" />
     <select name="operation">
@@ -89,7 +82,3 @@ if (!empty($resultat)) {
     <input type="checkbox" name="insert" />
     <input type="submit" />
 </form>
-
-</body>
-</html> 
-

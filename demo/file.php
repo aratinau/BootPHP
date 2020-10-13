@@ -1,6 +1,6 @@
 <?php
 
-const FILE_NAME = "file.txt";
+const FILE_NAME = DEMO_PATH .'/'. "file.txt";
 
 // $_POST["line"] !== '' equivaut à empty()
 if (isset($_POST["line"]) && !empty($_POST["line"])) {
@@ -18,7 +18,7 @@ if (isset($_GET["delete"])) {
     $new_file = str_replace($line, '', $content_file);
 
     file_put_contents(FILE_NAME, $new_file);
-    header('Location: file.php');
+    header('Location: '.$current_path_name);
 }
 
 // edit
@@ -29,27 +29,20 @@ if (isset($_POST["edit"])) {
     $edit_file = str_replace($line, $_POST["line"], $edit_file);
 
     file_put_contents(FILE_NAME, $edit_file);
-    header('Location: file.php');
+    header('Location: '.$current_path_name);
 
 }
 
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
 <h1>File</h1>
 
 <?php
 foreach ($content_file as $key => $line) {
     // nl2br converti "\n" en <br />
     echo $line;
-    echo '<a href="file.php?delete='.$key.'">delete</a>';
+    echo '<a href="'.$current_path_name.'&delete='.$key.'">delete</a>';
     echo ' ';
-    echo '<a href="file.php?edit='.$key.'">edit</a>';
+    echo '<a href="'.$current_path_name.'&edit='.$key.'">edit</a>';
     echo "<br />";
 }
 
@@ -58,7 +51,7 @@ if (isset($_GET["edit"])) {
     $value_line = $content_file[$_GET["edit"]];
 }
 ?>
-<form action="file.php" method="post">
+<form action="<?php echo $current_path_name; ?>" method="post">
     Inserer une ligne
     <input type="text" name="line" value="<?php echo $value_line; ?>" />
     <?php
@@ -69,7 +62,3 @@ if (isset($_GET["edit"])) {
     ?>
     <input type="submit" />
 </form>
-
-</body>
-</html> 
-
