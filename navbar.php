@@ -6,5 +6,7 @@
     <a class="p-2 text-dark" href="#">Support</a>
     <a class="p-2 text-dark" href="#">Pricing</a>
   </nav>
-  <a class="btn btn-outline-primary" href="#">Sign up</a>
+    <?php if (isset($_SESSION["user"])) : ?> 
+        <a class="btn btn-outline-primary" href="logout.php">Logout</a>
+    <?php endif; ?>
 </div>

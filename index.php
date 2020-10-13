@@ -1,7 +1,7 @@
 <?php
-const PASSWORD = "pass";
-
 session_start();
+
+const PASSWORD = "pass";
 
 // TODO variable messages flash
 if (isset($_POST["username"]) && isset($_POST["password"])) {
