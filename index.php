@@ -1,3 +1,16 @@
+<?php
+const PASSWORD = "pass";
+
+session_start();
+
+// TODO variable messages flash
+if (isset($_POST["username"]) && isset($_POST["password"])) {
+    if ($_POST["password"] === PASSWORD) {
+        $_SESSION["user"]["username"] = $_POST["username"];
+        header('Location: index.php');
+    }
+}
+?>
 <!doctype html>
 <html lang="en" class="">
 	<head>
@@ -18,7 +31,17 @@
 	<body class="">
     <?php require('navbar.php'); ?>
     <div class="container">
-		<h1>Hello</h1>
+        <?php
+			if (!isset($_SESSION["user"])) {
+				require('login.php'); 
+			}
+			else
+            {
+            ?>
+                <h1>Hello <?php echo $_SESSION["user"]["username"]; ?></h1>
+            <?php
+            }
+		?>
     </div>
 	</body>
 </html>
